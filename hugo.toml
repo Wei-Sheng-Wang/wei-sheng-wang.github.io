@@ -1,0 +1,49 @@
+baseURL = "https://your-username.github.io/"
+title = "My Research & Code Blog"
+theme = "PaperMod"
+paginate = 5
+
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+
+[minify]
+disableXML = true
+minifyOutput = true
+
+[params]
+env = "production"
+title = "My Research & Code Blog"
+description = "A blog about research, C++, and more"
+keywords = ["Blog", "Research", "C++", "Programming"]
+author = "Your Name"
+DateFormat = "January 2, 2006"
+defaultTheme = "auto"
+disableThemeToggle = false
+ShowReadingTime = true
+ShowShareButtons = true
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowCodeCopyButtons = true
+ShowWordCount = true
+ShowRssButtonInSectionTermList = true
+UseHugoToc = true
+
+  [params.profileMode]
+  enabled = true
+  title = "My Research Blog"
+  subtitle = "Documenting my journey through research, C++, and software engineering"
+  imageUrl = "https://avatars.githubusercontent.com/u/your-username"
+  imageTitle = "my profile"
+
+  [[params.socialIcons]]
+  name = "github"
+  url = "https://github.com/your-username"
+
+[markup.highlight]
+noClasses = false
+codeFences = true
+guessSyntax = true
+lineNos = true
+style = "monokai"
