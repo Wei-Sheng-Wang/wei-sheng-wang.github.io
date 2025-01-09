@@ -1,46 +1,19 @@
 ---
-title: "Welcome to My Research Blog"
-date: 2024-03-19
+title: "Welcome Blog"
+date: 2025-01-07
 description: "An introduction to my technical blog"
 tags: ["welcome", "first-post"]
 categories: ["general"]
 ---
+<!-- 
+I'm currently working as an AI engineer at iFAST Global Hub AI in Malaysia. I have worked for roughly a year - 
+1. Building an AI chatbot for our digital banking platform (iFAST Global Bank UK), 
+2. Implementing a centralized platform for our customer service team to easily update the chatbot's knowledge base, 
+3. Participated in Google trailblazer program to prototype a text-to-sql chatbot for our insurance team to streamline the process of retrieving infomation.
 
-Welcome to my research and programming blog! This space will be dedicated to sharing insights, discoveries, and experiences in:
+I've always been fascinated by LLM. When I took my master program at NTU singapore, I envisioned a career where I would fine-tune LLM models or design new LLM architecture and so on. Reality was harsh. When I graduated, I struggled to find a job that suited my perferences, I wasn't the top student, nor did I had a PHD. I wanted to do research. 
 
-- Research findings and methodologies
-- C++ programming techniques
-- Software engineering best practices
-- Technical tutorials and guides
+I quickly realized that 
 
-## Example Code
 
-Here's a simple C++ example demonstrating modern C++ features:
-
-```cpp
-#include <iostream>
-#include <vector>
-#include <algorithm>
-
-auto calculate_sum(const std::vector<int>& numbers) {
-    return std::accumulate(numbers.begin(), numbers.end(), 0);
-}
-
-int main() {
-    std::vector numbers = {1, 2, 3, 4, 5};
-    std::cout << "Sum: " << calculate_sum(numbers) << std::endl;
-    return 0;
-}
-```
-
-## What to Expect
-
-In this blog, I'll be covering:
-
-1. Detailed technical write-ups
-2. Code explanations and best practices
-3. Research methodology and findings
-4. Problem-solving approaches
-5. Performance optimization techniques
-
-Stay tuned for more content! 
+This is my first official project that I'm working on after graduating from university. My current role as an AI engineer was getting a bit dull (making apis call to LLM services), so I decided pick up more challenging new skills - C++, systems programming, distributed systems, performance engineering, etc. -->

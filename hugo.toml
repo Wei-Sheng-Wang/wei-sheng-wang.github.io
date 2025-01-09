@@ -1,7 +1,7 @@
-baseURL = "https://your-username.github.io/"
-title = "My Research & Code Blog"
+baseURL = "https://wei-sheng-wang.github.io/"
+title = "Wei Sheng's Blog"
 theme = "PaperMod"
-paginate = 5
+pagerSize = 5
 
 enableRobotsTXT = true
 buildDrafts = false
@@ -14,10 +14,10 @@ minifyOutput = true
 
 [params]
 env = "production"
-title = "My Research & Code Blog"
+title = "Wei Sheng's Blog"
 description = "A blog about research, C++, and more"
 keywords = ["Blog", "Research", "C++", "Programming"]
-author = "Your Name"
+author = "Wei Sheng"
 DateFormat = "January 2, 2006"
 defaultTheme = "auto"
 disableThemeToggle = false
@@ -29,17 +29,43 @@ ShowCodeCopyButtons = true
 ShowWordCount = true
 ShowRssButtonInSectionTermList = true
 UseHugoToc = true
+comments = true
+ShareButtons = ["linkedin", "reddit", "ycombinator", "x"]
 
   [params.profileMode]
   enabled = true
-  title = "My Research Blog"
-  subtitle = "Documenting my journey through research, C++, and software engineering"
-  imageUrl = "https://avatars.githubusercontent.com/u/your-username"
+  title = "Wei Sheng's Blog"
+  subtitle = "Software Engineer | AI Engineer | Trading | C++ Programming Enthusiast"
+  imageUrl = "/images/profile.png"
   imageTitle = "my profile"
+  imageWidth = 220
+  imageHeight = 220
+
+  [[params.profileMode.buttons]]
+  name = "Posts"
+  url = "posts"
+
+  [[params.profileMode.buttons]]
+  name = "Projects"
+  url = "projects"
+
+
+
+  [[params.profileMode.buttons]]
+  name = "About"
+  url = "about"
 
   [[params.socialIcons]]
   name = "github"
-  url = "https://github.com/your-username"
+  url = "https://github.com/Wei-Sheng-Wang"
+
+  [[params.socialIcons]]
+  name = "linkedin"
+  url = "https://www.linkedin.com/in/wei-sheng-wang-60b096212/"
+
+  [[params.socialIcons]]
+  name = "email"
+  url = "mailto:weisheng9822@gmail.com"
 
 [markup.highlight]
 noClasses = false
@@ -47,3 +73,31 @@ codeFences = true
 guessSyntax = true
 lineNos = true
 style = "monokai"
+
+[menu]
+  [[menu.main]]
+  identifier = "posts"
+  name = "Posts"
+  url = "/posts/"
+  weight = 10
+
+  [[menu.main]]
+  identifier = "projects"
+  name = "Projects"
+  url = "/projects/"
+  weight = 20
+
+  [[menu.main]]
+  identifier = "about"
+  name = "About"
+  url = "/about/"
+  weight = 30
+
+  [[menu.main]]
+  identifier = "search"
+  name = "Search"
+  url = "/search/"
+  weight = 40
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
