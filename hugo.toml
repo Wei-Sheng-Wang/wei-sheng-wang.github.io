@@ -101,3 +101,17 @@ style = "monokai"
 
 [outputs]
 home = ["HTML", "RSS", "JSON"]
+
+[params.giscus]
+  repo = "Wei-Sheng-Wang/weisheng.github.io"
+  repoID = "R_kgDONmZqOQ"
+  category = "Comments"
+  categoryID = "DIC_kwDONmZqOc4Cl3HQ"
+  mapping = "pathname"
+  strict = "0"
+  reactionsEnabled = "1"
+  emitMetadata = "0"
+  inputPosition = "top"
+  theme = "preferred_color_scheme"
+  lang = "en"
+  loading = "lazy"
