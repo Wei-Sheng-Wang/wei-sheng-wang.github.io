@@ -11,6 +11,8 @@ Welcome to my journey into the world of distributed systems! In this blog post, 
 
 [GitHub Repository](https://github.com/Wei-Sheng-Wang/CacheMesh)
 
+---
+
 ## Table of Contents
 
 -   [KVMesh: A C++ Distributed Key-Value Store](#kvmesh-a-c-distributed-key-value-store)
@@ -36,6 +38,8 @@ Welcome to my journey into the world of distributed systems! In this blog post, 
 -   [Future Work](#future-work)
 -   [References](#references)
 
+---
+
 ## Project Goals
 
 The primary goals of KVMesh are to:
@@ -46,6 +50,8 @@ The primary goals of KVMesh are to:
 -   **High Concurrency:** Efficiently handle a large number of concurrent read and write requests.
 -   **Flexibility:** Support multiple eviction policies, starting with Least Recently Used (LRU) with optional Time-to-Live (TTL).
 
+---
+
 ## System Design
 
 ### Peer-to-Peer Model
@@ -54,11 +60,15 @@ KVMesh employs a **peer-to-peer (P2P) decentralized model**, where each node in 
 
 The core of this distributed system lies in **consistent hashing**, a technique that allows us to distribute data evenly across multiple nodes while minimizing data movement when nodes are added or removed. More on this later!
 
+---
+
 ### Inter-Node Communication with gRPC and Protobuf
 
 For efficient inter-node communication, KVMesh leverages the power of **gRPC** and **Protocol Buffers (Protobuf)**. gRPC, a high-performance, open-source universal RPC framework, provides a robust foundation for building distributed systems. Its use of HTTP/2 enables features like multiplexing and header compression, which contribute to reduced latency and improved throughput.
 
 Protobuf, on the other hand, serves as the interface definition language (IDL) and serialization mechanism. By defining our data structures and service methods in `.proto` files, we can generate efficient and type-safe code for serialization and deserialization. This ensures that data exchanged between nodes is compact, fast to process, and less prone to errors.
+
+---
 
 ### Request Handling
 
@@ -75,6 +85,8 @@ Let's take a look at how KVMesh handles different types of client requests:
 5. **Replication:** The request is asynchronously replicated to other responsible nodes to ensure redundancy.
 6. **Acknowledgement:** The client receives a success response once the data is written to the WAL and replicated.
 
+---
+
 #### Get Request
 
 ![Get Request Process](/projects/images/kvmesh/kvmesh-get-request-process-flow.jpg)
@@ -84,9 +96,13 @@ Let's take a look at how KVMesh handles different types of client requests:
 3. **Local or Forward:** If the current node is responsible, it retrieves the value from its local LRU cache. Otherwise, it forwards the request to a responsible node.
 4. **Response:** The client receives the value associated with the key.
 
+---
+
 #### Remove Request
 
 The remove request follows a similar process to the put request. It ensures that a key-value pair is deleted from all responsible nodes.
+
+---
 
 ## Implementation Details
 
@@ -156,12 +172,13 @@ void ConsistentHash::addNode(const std::string& nodeId) {
 
 By appending a unique identifier to each node ID and hashing it multiple times, we create virtual nodes (e.g., Node 1.1, Node 1.2, Node 2.1) that are more evenly distributed around the ring, leading to better load balancing.
 
+---
+
 ### LRU Cache with TTL
 
 Each node in KVMesh maintains an in-memory LRU (Least Recently Used) cache for fast data access. The LRU cache is implemented using a combination of a `std::unordered_map` and a `std::list` to maintain the order of items based on their usage. `std::unordered_map` maps the key to the iterator of the cache item in the list, depicted in the diagram below.
 
 ![LRU Cache](/projects/images/kvmesh/kvmesh-lru-implementation.jpg)
-
 
 ```cpp
 struct CacheItem {
@@ -245,6 +262,8 @@ Both `put` and `get` operations use a `std::lock_guard` to ensure thread-safe ac
 
 (If you wanna practice how to implement LRU cache, go do [leetcode problem](https://leetcode.com/problems/lru-cache/).)
 
+---
+
 ### Write-Ahead Logging (WAL) for Durability and Consistency
 
 To ensure data durability and consistency, KVMesh implements Write-Ahead Logging (WAL). Before any modification is made to the in-memory cache, the operation (Put or Remove) is first serialized using Protobuf and written to the WAL file.
@@ -286,6 +305,8 @@ Currently, the WAL file is shared among all nodes, which creates a single point 
 -   **Snapshots:** Create periodic snapshots of the cache state to speed up recovery.
 
 Coordinating log compaction and snapshots in a distributed environment with per-node WAL files presents interesting challenges. I'm considering using a consensus algorithm or a distributed transaction mechanism to ensure consistency across nodes during these operations.
+
+---
 
 ### Write Queue: Asynchronous Logging
 
@@ -350,6 +371,8 @@ The predicate `!running_ || queue_.size() >= batch_size_` ensures that the threa
 
 Interestingly, in my initial tests, the Write Queue didn't provide a significant performance improvement. I suspect this is because I'm currently writing to an SSD and dealing with relatively small string values. The overhead of batching might be outweighing the benefits in this scenario. However, I anticipate that the Write Queue will become more beneficial when dealing with larger values/objects or slower storage devices (e.g., HDDs).
 
+---
+
 ### Node Class: Orchestrating the Components
 
 The `Node` class is the central component of each KVMesh node. It integrates the various modules and manages the gRPC service for handling client requests.
@@ -378,6 +401,8 @@ std::shared_ptr<grpc::Channel> getOrCreateChannel(std::string& node_address){
 ```
 
 The `getOrCreateChannel` method provides a thread-safe way to retrieve an existing channel or create a new one if it doesn't exist in the pool.
+
+---
 
 #### Cleanup Thread for TTL Management
 
@@ -417,6 +442,8 @@ The `cleanup` method iterates through the cache list and removes any items whose
 -   **Metrics:** Collect metrics on cleanup operations to monitor performance and identify potential bottlenecks.
 -   **Distributed TTL Coordination:** Explore mechanisms for coordinating TTL expiration across nodes in a distributed manner.
 
+---
+
 ## Performance Optimization and Evaluation
 
 During the development of KVMesh, I encountered several performance bottlenecks and implemented optimizations to address them.
@@ -442,15 +469,21 @@ I conducted load tests using a Python client to simulate concurrent read and wri
 
 Interestingly, the performance was slightly worse when the client interacted with random nodes. I attribute this to factors like connection management overhead, channel pool efficiency, and TCP connection reuse. Further investigation is needed to pinpoint the exact cause.
 
+---
+
 ## Challenges
 
 The most significant challenges I faced were related to writing correct and efficient thread-safe code. I encountered my first deadlock during testing, which I eventually resolved through careful tracing and debugging.
+
+---
 
 ## Testing
 
 I employed a combination of unit tests and load tests using a Python client. The unit tests focused on individual components like the LRU cache, consistent hash, and WAL. The load tests evaluated the overall system performance under concurrent read and write operations.
 
 The Python client uses the `grpc` library to communicate with the KVMesh nodes. It provides methods for `put`, `get`, and `remove` operations.
+
+---
 
 ## Future Work
 
@@ -462,6 +495,8 @@ Here are some areas I'm planning to explore in the future:
 -   **Caching Enhancements:** Explore more advanced caching strategies, such as adaptive caching and prefetching.
 -   **Monitoring and Metrics:** Implement comprehensive monitoring and metrics collection to gain insights into system performance and identify bottlenecks.
 -   **Security:** Add security features like authentication and encryption to protect data in transit and at rest.
+
+---
 
 ## References
 
