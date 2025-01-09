@@ -11,12 +11,12 @@ This is my personal blog built with [Hugo](https://gohugo.io/) and the [PaperMod
 
 2. Clone this repository:
    ```bash
-   git clone --recursive YOUR_REPOSITORY_URL
+   git clone https://github.com/Wei-Sheng-Wang/wei-sheng-wang.github.io.git
    ```
 
 3. Start the local development server:
    ```bash
-   hugo server -D
+   hugo server -D -p 1313
    ```
 
 4. View your site at http://localhost:1313/
@@ -39,7 +39,7 @@ To customize the site:
 
 1. Edit `hugo.toml` for site configuration
 2. Modify theme settings in `hugo.toml`
-3. Add content in the `content/posts` directory
+3. Add content in the `content/posts` directory or `content/projects` directory
 
 ## Theme Documentation
 
