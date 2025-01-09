@@ -115,3 +115,8 @@ home = ["HTML", "RSS", "JSON"]
   theme = "preferred_color_scheme"
   lang = "en"
   loading = "lazy"
+
+[params.analytics.umami]
+enabled = true
+websiteId = "a19f93e9-7c34-40c3-9ef6-57e824066d02"
+scriptUrl = "https://cloud.umami.is/script.js"
