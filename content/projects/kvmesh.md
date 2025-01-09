@@ -1,7 +1,7 @@
 ---
 title: "KVMesh: My Journey Building a C++ Distributed Key-Value Store"
 date: 2025-01-06
-draft: true
+draft: false
 tags: ["C++", "Systems Programming", "Cache", "Performance", "Key-Value Store", "Distributed Systems"]
 ---
 
