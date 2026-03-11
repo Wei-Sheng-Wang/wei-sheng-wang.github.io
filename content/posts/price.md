@@ -1,5 +1,5 @@
 ---
-title: "价格"
+title: "代价"
 date: 2026-03-11
 description: "关于欲望、代价与边界的一篇随笔。"
 tags: ["essay", "life", "choice", "boundaries"]
