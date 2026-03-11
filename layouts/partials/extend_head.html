@@ -1,3 +1,54 @@
 {{- /* Head custom content area start */ -}}
 {{- partial "analytics.html" . }}
+<style>
+  .language-switcher {
+    margin: 0 0 24px;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--entry);
+  }
+
+  .language-switcher-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .language-switcher-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 96px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--theme);
+    color: var(--primary);
+    text-decoration: none;
+    box-shadow: none !important;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .language-switcher-link:hover {
+    background: var(--tertiary);
+    border-color: var(--secondary);
+  }
+
+  .language-switcher-link.is-active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--theme);
+  }
+
+  .language-switcher-note {
+    margin: 10px 0 0;
+    color: var(--secondary);
+    font-size: 0.95rem;
+  }
+
+  .language-switcher-note p {
+    margin: 0;
+  }
+</style>
 {{- /* Head custom content area end */ -}} 

@@ -2,9 +2,12 @@
 title: "代价"
 date: 2026-03-11
 description: "关于欲望、代价与边界的一篇随笔。"
+summary: "边界并不在选择之前，而是在代价真正落到身上之后，才一点一点显形。"
 tags: ["essay", "life", "choice", "boundaries"]
 categories: ["general"]
 ---
+
+{{< language_switcher current="zh" zh_url="/posts/price/" en_url="/posts/price-en/" note="English version edited by ChatGPT." >}}
 
 边界并不在选择之前，而是在代价真正落到身上之后，才一点一点显形。
 

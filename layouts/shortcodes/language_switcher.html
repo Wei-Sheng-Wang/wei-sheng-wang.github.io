@@ -1,0 +1,24 @@
+{{- $current := .Get "current" | default "" -}}
+{{- $zhURL := .Get "zh_url" | default "" -}}
+{{- $zhLabel := .Get "zh_label" | default "中文" -}}
+{{- $enURL := .Get "en_url" | default "" -}}
+{{- $enLabel := .Get "en_label" | default "English" -}}
+{{- $note := .Get "note" | default "" -}}
+
+<div class="language-switcher" aria-label="Language switcher">
+  <div class="language-switcher-options">
+    {{- if $zhURL -}}
+    <a class="language-switcher-link{{ if eq $current "zh" }} is-active{{ end }}" href="{{ $zhURL }}">
+      {{ $zhLabel }}
+    </a>
+    {{- end -}}
+    {{- if $enURL -}}
+    <a class="language-switcher-link{{ if eq $current "en" }} is-active{{ end }}" href="{{ $enURL }}">
+      {{ $enLabel }}
+    </a>
+    {{- end -}}
+  </div>
+  {{- with $note }}
+  <p class="language-switcher-note">{{ . | markdownify }}</p>
+  {{- end }}
+</div>
