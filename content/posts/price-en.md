@@ -1,5 +1,5 @@
 ---
-title: "The Price"
+title: "What We’re Willing to Pay For"
 date: 2026-03-11
 description: "An essay on desire, cost, and the boundaries we only discover by living into them."
 summary: "Maybe the better question isn’t what you want, but what you’re willing to pay for it."
