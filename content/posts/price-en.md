@@ -7,7 +7,7 @@ tags: ["essay", "life", "choice", "boundaries"]
 categories: ["general"]
 ---
 
-{{< language_switcher current="en" zh_url="/posts/price/" en_url="/posts/price-en/" note="Edited by ChatGPT." >}}
+{{< language_switcher current="en" zh_url="/posts/price/" en_url="/posts/price-en/" >}}
 
 I’m starting to think our boundaries don’t really show themselves before a choice is made. They only become visible after the cost starts landing on us for real.
 

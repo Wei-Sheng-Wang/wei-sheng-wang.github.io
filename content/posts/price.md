@@ -7,7 +7,7 @@ tags: ["essay", "life", "choice", "boundaries"]
 categories: ["general"]
 ---
 
-{{< language_switcher current="zh" zh_url="/posts/price/" en_url="/posts/price-en/" note="English version edited by ChatGPT." >}}
+{{< language_switcher current="zh" zh_url="/posts/price/" en_url="/posts/price-en/" >}}
 
 边界并不在选择之前，而是在代价真正落到身上之后，才一点一点显形。
 
